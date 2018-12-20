@@ -6,8 +6,7 @@ def value(node):
         return sum(
             value(node["child"][idx - 1])
             for idx in node["metadata"]
-            if idx > 0 and idx <= len(node["child"])
-        )
+            if 0 < idx <= len(node["child"]))
     return sum(node["metadata"])
 
 

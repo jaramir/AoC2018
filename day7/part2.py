@@ -33,9 +33,9 @@ def solve(dependants, base_cost=60, workers=5):
             started_tasks[task] = t + duration(task)
             outstanding_tasks.remove(task)
 
-        wip = "".join(started_tasks.keys())
-        done = "".join(sequence)
-        print "{t:4d} | {wip:5s} | {done}".format(**locals())
+        # wip = "".join(started_tasks.keys())
+        # done = "".join(sequence)
+        # print "{t:4d} | {wip:5s} | {done}".format(**locals())
 
         if outstanding_tasks or started_tasks:
             t = min(started_tasks.values())

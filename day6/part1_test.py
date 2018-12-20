@@ -13,14 +13,14 @@ class Part1(unittest.TestCase):
         ]
         cells2 = step(cells1)
         cells3 = step(cells2)
-        self.assertItemsEqual(cells2[0], [
+        self.assertItemsEqual([
             ( 0,  0),
             (-1,  0),
             ( 1,  0),
             ( 0,  1),
             ( 0, -1)
-        ])
-        self.assertItemsEqual(cells3[0], [
+        ], cells2[0])
+        self.assertItemsEqual([
             ( 0,  0),
             (-1,  0),
             ( 1,  0),
@@ -34,7 +34,7 @@ class Part1(unittest.TestCase):
             (-1,  1),
             ( 1, -1),
             ( 1,  1)
-        ])
+        ], cells3[0])
 
     #                              A B
     #                 A B         AA BB
@@ -47,18 +47,18 @@ class Part1(unittest.TestCase):
             [(2, 0)]
         ]
         cells2 = step(cells1)
-        self.assertItemsEqual(cells2[0], [
+        self.assertItemsEqual([
             ( 0,  0),
             (-1,  0),
             ( 0,  1),
             ( 0, -1)
-        ])
-        self.assertItemsEqual(cells2[1], [
+        ], cells2[0])
+        self.assertItemsEqual([
             ( 2,  0),
             ( 2,  1),
             ( 2, -1),
             ( 3,  0)
-        ])
+        ], cells2[1])
 
 if __name__ == '__main__':
     unittest.main()

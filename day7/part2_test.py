@@ -12,4 +12,4 @@ class Part2Test(unittest.TestCase):
             ('D', 'E'),
             ('F', 'E')
         ]
-        self.assertEqual(solve(input, base_cost=0, workers=2), 15)
+        self.assertEqual(15, solve(input, base_cost=0, workers=2))

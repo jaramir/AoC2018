@@ -12,15 +12,15 @@ class Part1(unittest.TestCase):
             ('D', 'E'),
             ('F', 'E')
             ]
-        self.assertEqual(solve(input), 'CABDFE')
+        self.assertEqual('CABDFE', solve(input))
 
     def test_two_taks(self):
         input = [('A', 'B')]
-        self.assertEqual(solve(input), 'AB')
+        self.assertEqual('AB', solve(input))
 
     def test_two_taks_other_way_around(self):
         input = [('B', 'A')]
-        self.assertEqual(solve(input), 'BA')
+        self.assertEqual('BA', solve(input))
 
 if __name__ == '__main__':
     unittest.main()

@@ -6,19 +6,19 @@ node_with_child = {"child": [empty], "metadata": []}
 
 class Part1TestCase(unittest.TestCase):
     def test_parse_empty_node(self):
-        self.assertEqual(parse([0, 0]), empty)
+        self.assertEqual(empty, parse([0, 0]))
 
     def test_parse_node_with_metadata(self):
-        self.assertEqual(parse([0, 2, 4, 6]), {"child": [], "metadata": [4, 6]})
+        self.assertEqual({"child": [], "metadata": [4, 6]}, parse([0, 2, 4, 6]))
 
     def test_parse_node_with_child(self):
-        self.assertEqual(parse([1, 0, 0, 0]), node_with_child)
+        self.assertEqual(node_with_child, parse([1, 0, 0, 0]))
 
     def test_flatten_empty_node(self):
-        self.assertEqual(flatten(empty), [empty])
+        self.assertEqual([empty], flatten(empty))
 
     def test_flatten_node_with_child(self):
-        self.assertEqual(flatten(node_with_child), [node_with_child, empty])
+        self.assertEqual([node_with_child, empty], flatten(node_with_child))
 
 if __name__ == '__main__':
     unittest.main()

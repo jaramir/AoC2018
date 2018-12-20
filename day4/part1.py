@@ -3,7 +3,7 @@ from collections import defaultdict
 def parse_event(event):
     return int(event[15:17]), event[19:].strip()
 
-events = sorted([line for line in open('day4/input')])
+events = sorted([line for line in open('input')])
 
 events_per_guard = defaultdict(list)
 

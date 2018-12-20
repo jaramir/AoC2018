@@ -14,5 +14,5 @@ def react(polymer):
     return "".join(polymer)
 
 if __name__ == '__main__':
-    input = open('day5/input').read()
+    input = open('input').read()
     print len(react(input))

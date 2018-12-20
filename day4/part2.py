@@ -53,7 +53,7 @@ def get_asleep_probability(nights_worked, max_times_asleep):
     return asleep_probability
 
 if __name__ == '__main__':
-    events = sorted([line for line in open('day4/input')])
+    events = sorted([line for line in open('input')])
     events_per_guard = get_events_by_guard(events)
     sleep_patterns = get_sleep_patterns(events_per_guard)
     nights_worked = get_nights_worked(events)

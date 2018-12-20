@@ -22,7 +22,7 @@ def filter(unit, polymer):
     return re.sub(unit, '', polymer, flags=re.IGNORECASE)
 
 if __name__ == '__main__':
-    input = open('day5/input').read()
+    input = open('input').read()
 
     reacted = react(input)
     print len(reacted)

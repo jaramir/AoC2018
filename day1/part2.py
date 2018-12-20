@@ -1,7 +1,7 @@
 import sys
 from itertools import cycle
 
-changes = [int(line) for line in open("day1/input")]
+changes = [int(line) for line in open("input")]
 
 current = 0
 seen = set()

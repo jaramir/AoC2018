@@ -16,7 +16,7 @@ def to_areas(claim):
         for y in range(claim['top'], claim['top'] + claim["height"]):
             yield (x, y)
 
-claims = [parse_claim(line.strip()) for line in open('day3/input')]
+claims = [parse_claim(line.strip()) for line in open('input')]
 
 areas = [
     area

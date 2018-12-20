@@ -1,5 +1,4 @@
 import re
-import sys
 
 def parse_claim(claim):
     id, left, top, width, height = re.sub('[ #@,x:]', ' ', claim).split()
@@ -18,7 +17,7 @@ def to_areas(claim):
 
 claims = {
     claim["id"]: set(to_areas(claim))
-    for line in open('day3/input')
+    for line in open('input')
     for claim in parse_claim(line.strip())
 }
 

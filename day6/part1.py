@@ -1,11 +1,9 @@
 def neighbours(cell):
     x, y = cell
-    return set([
-        (x + 1, y),
-        (x - 1, y),
-        (x, y + 1),
-        (x, y - 1)
-    ])
+    return {(x + 1, y),
+            (x - 1, y),
+            (x, y + 1),
+            (x, y - 1)}
 
 def contested(point, cells):
     for neighbour in neighbours(point):
@@ -55,7 +53,7 @@ def stat(families):
 if __name__ == '__main__':
     families = [
         [tuple(map(int, line.strip().split(", ")))]
-        for line in open("day6/input")
+        for line in open("input")
     ]
 
     for i in range(200):

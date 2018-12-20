@@ -22,5 +22,5 @@ def solve(dependants):
 if __name__ == '__main__':
     print solve([
         (line[5], line[36])
-        for line in open("day7/input")
+        for line in open("input")
     ])

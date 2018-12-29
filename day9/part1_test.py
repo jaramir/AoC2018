@@ -5,33 +5,25 @@ from part1 import Game
 
 class Part1TestCase(unittest.TestCase):
     def test_game_start_with_marble_zero(self):
-        self.assertEqual(Game().marbles, [0])
-
-    def test_game_start_with_zeroth_marble_being_current(self):
-        self.assertEqual(Game().current, 0)
+        self.assertItemsEqual([0], Game().get_marbles())
 
     def test_marbles_are_added_one_place_after_current_and_become_current(self):
         game = Game()
         game.turn()
-        self.assertEqual([0, 1], game.marbles)
-        self.assertEqual(1, game.current)
+        self.assertItemsEqual([1, 0], game.get_marbles())
         game.turn()
-        self.assertEqual([0, 2, 1], game.marbles)
-        self.assertEqual(1, game.current)
+        self.assertItemsEqual([2, 1, 0], game.get_marbles())
         game.turn()
-        self.assertEqual([0, 2, 1, 3], game.marbles)
-        self.assertEqual(3, game.current)
+        self.assertItemsEqual([3, 0, 2, 1], game.get_marbles())
         game.turn()
-        self.assertEqual([0, 4, 2, 1, 3], game.marbles)
-        self.assertEqual(1, game.current)
+        self.assertItemsEqual([4, 2, 1, 3, 0], game.get_marbles())
 
     def test_marbles_divisible_by_23_are_different(self):
         game = Game()
         game.play_until(22)
-        self.assertEqual([0, 16, 8, 17, 4, 18, 9, 19, 2, 20, 10, 21, 5, 22, 11, 1, 12, 6, 13, 3, 14, 7, 15], game.marbles)
+        self.assertItemsEqual([22, 11, 1, 12, 6, 13, 3, 14, 7, 15, 0, 16, 8, 17, 4, 18, 9, 19, 2, 20, 10, 21, 5], game.get_marbles())
         game.turn()
-        self.assertEqual([0, 16, 8, 17, 4, 18, 19, 2, 20, 10, 21, 5, 22, 11, 1, 12, 6, 13, 3, 14, 7, 15], game.marbles)
-        self.assertEqual(6, game.current)
+        self.assertItemsEqual([19, 2, 20, 10, 21, 5, 22, 11, 1, 12, 6, 13, 3, 14, 7, 15, 0, 16, 8, 17, 4, 18], game.get_marbles())
 
     def test_23th_turns_score_points_to_current_player(self):
         game = Game(players=9)

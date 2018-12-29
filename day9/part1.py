@@ -1,7 +1,24 @@
+class Node:
+    def __init__(self, value, prev=None, next=None):
+        self.value = value
+        self.next = self if next is None else next
+        self.prev = self if prev is None else prev
+
+    def insert(self, value):
+        node = Node(value, self, self.next)
+        self.next.prev = node
+        self.next = node
+        return node
+
+    def remove(self):
+        self.prev.next = self.next
+        self.next.prev = self.prev
+        return self.next
+
+
 class Game:
     def __init__(self, players=1):
-        self.marbles = [0]
-        self.current = 0
+        self.marbles = Node(0)
         self.last = 0
         self.points = [0] * players
 
@@ -9,29 +26,27 @@ class Game:
         value = self.last + 1
 
         if value % 23 == 0:
-            index = self.current - 7
-            if index < 0:
-                index += len(self.marbles)
-
+            self.marbles = self.marbles.prev.prev.prev.prev.prev.prev.prev
             player = (value - 1) % len(self.points)
-            self.points[player] += value + self.marbles[index]
-
-            del self.marbles[index]
+            self.points[player] += value + self.marbles.value
+            self.marbles = self.marbles.remove()
         else:
-            index = self.current + 2
+            self.marbles = self.marbles.next.insert(value)
 
-            if index > len(self.marbles):
-                index -= len(self.marbles)
-
-            self.marbles.insert(index, value)
-
-        self.current = index
         self.last = value
 
     def play_until(self, value):
         while self.last < value:
             self.turn()
         return self
+
+    def get_marbles(self):
+        n = self.marbles
+        yield n.value
+        n = n.next
+        while n != self.marbles:
+            yield n.value
+            n = n.next
 
 
 if __name__ == '__main__':
